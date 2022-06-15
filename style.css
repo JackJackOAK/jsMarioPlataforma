@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.game-board {
+    background: linear-gradient(#87CEEB, #E0F6FF);
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.pipe {
+    animation: pipe-animation 1.5s infinite linear;
+    bottom: 0;
+    height: 80px;
+    position: absolute;
+    width: 80px;
+}
+
+.mario {
+    bottom: 0;
+    position: absolute;
+    width: 150px;
+}
+
+.jump {
+    animation: jump 500ms ease-out;
+}
+
+.clouds {
+    animation: clouds-animation 15s infinite linear;
+    position: absolute;
+    width: 550px;
+}
+
+.grass {
+    background-image: url(imagens/grass.png) ;
+    background-size: contain;
+    height: 35px;
+    width: 100%;
+}
+
+@keyframes pipe-animation {
+    from{
+        right: -80px;
+    }
+
+    to {
+        right: 100%;
+    }
+
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0px;
+    }
+
+    40% {
+        bottom: 180px;
+    }
+
+    60% {
+        bottom: 180px;
+    }
+
+    100% {
+        bottom: 0px;
+    }
+}
+
+@keyframes clouds-animation {
+    from {
+        right: -550px;
+    }
+
+    to {
+        right: 100%;
+    }
+}
