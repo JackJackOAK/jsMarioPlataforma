@@ -6,17 +6,33 @@
 
 body {
     align-items: center;
+    font-family: sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.display-game {
+    align-items: center;
+    background-image: url(imagens/MarioBackground.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
 .game-board {
     background: linear-gradient(#87CEEB, #E0F6FF);
-    height: 500px;
+    border-radius: 25px 25px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 75vh;
     overflow: hidden;
     position: relative;
-    width: 100%;
+    width: 75vw;
 }
 
 .pipe {
@@ -29,6 +45,7 @@ body {
 
 .mario {
     bottom: 0;
+    left: 0;
     position: absolute;
     width: 150px;
 }
@@ -46,8 +63,46 @@ body {
 .grass {
     background-image: url(imagens/grass.png) ;
     background-size: contain;
+    border-radius: 0 0 25px 25px;
     height: 35px;
-    width: 100%;
+    width: 75vw;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+    background-image: url(imagens/MarioScore.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    border: 3px solid #26e600;
+    border-radius: 10px;
+    color: #26e600;
+    font-weight: bold;
+    font-size: 85px;
+    height: 150px;
+    justify-content: center;
+    margin-top: 2rem;
+    text-decoration-style: solid;
+    text-transform: uppercase;
+    text-shadow: -1px 1px 1px rgb(0, 0, 0);
+    width: 250px;
+    z-index: 9;
+}
+
+.restart {
+    display: none;
+}
+
+.restart img {
+    margin-top: 50%;
+    width: 150px;
+}
+
+.restart img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: .1s;
 }
 
 @keyframes pipe-animation {

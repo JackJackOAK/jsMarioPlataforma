@@ -6,14 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Mario</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    
 </head>
 <body>
-    <main class="game-board">
-        <img src="imagens/clouds.png" alt="Clouds" class="clouds">
-        <img src="imagens/mario.gif" alt="Mario character" class="mario">
-        <img src="imagens/pipe.png" alt="Mario's pipe" class="pipe">
+    <main class="display-game">
+        <section class="game-board">
+            <div class="score">
+                0
+            </div>
+            <div class="restart" onclick="reloadGame()">
+                <img src="imagens/restart.jpg" alt="Mario's restart">
+            </div>
+            <img src="imagens/clouds.png" alt="Clouds" class="clouds">
+            <img src="imagens/mario.gif" alt="Mario character" class="mario">
+            <img src="imagens/2.png" alt="Mario's obstacle" class="pipe">
+        </section>
+        <section class="grass"></section>    
     </main>
-    <footer class="grass"></footer>
+    <script src="script.js"></script>
 </body>
 </html>

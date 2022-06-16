@@ -1,16 +1,19 @@
 const mario = document.querySelector('.mario');
 const pipe = document.querySelector('.pipe');
 const clouds = document.querySelector('.clouds');
+const restart = document.querySelector('.restart');
+
 const diesSound = new Audio('imagens/smb_mariodie.wav');
 const playSound = new Audio('imagens/');
 const overWolrdSound = new Audio('imagens/11a Overworld.mp3');
 const jumpSound = new Audio('imagens/smb_jump-small.wav');
 
-overWolrdSound.loop = true;
+const scoreMold = document.querySelector('.score');
+
+let score = 0;
 
 const jump = () => {
 
-    overWolrdSound.play();
     jumpSound.play();
     
     mario.classList.add('jump');
@@ -22,15 +25,16 @@ const jump = () => {
 
 const loop = setInterval(() => {
 
-    let pipePosition = pipe.offsetLeft;
     let cloudsPosition = clouds.offsetLeft;
-    let marioPosition = +window.getComputedStyle(mario).bottom.replace('px','');
+    const pipePosition = pipe.offsetLeft;
+    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px','');
 
-    console.log(marioPosition);
     if(pipePosition <= 120 && pipePosition > 0 && marioPosition < 80) {
 
         overWolrdSound.pause();
-        diesSound.play();
+        diesSound.play(); 
+
+        restart.style.display = 'flex';
 
         pipe.style.animation = 'none';
         pipe.style.left = `${pipePosition}px`;
@@ -43,10 +47,50 @@ const loop = setInterval(() => {
         
         mario.src = 'imagens/game-over.png';
         mario.style.width = '80px';
-        mario.style.marginLeft = '50px';
+        mario.style.marginLeft = '10px';
     
         clearInterval(loop);
+        clearInterval(scoreCount);
+        clearInterval(obstacle);
     };
+
 }, 10);
 
-document.addEventListener('keydown', jump);
+const scoreCount = setInterval(() => {
+
+        score++;
+        scoreMold.innerHTML = parseInt(score);
+
+}, 1500);
+
+const playMusic = setInterval(() => {
+    overWolrdSound.play();
+    overWolrdSound.loop = true;
+    clearInterval(playMusic);
+}, 500);
+
+const obstacle = setInterval(() => {
+
+    img = Math.floor(Math.random() * 3);
+
+    if(img == 0) {
+        pipe.src = 'imagens/2.png';
+    } else {
+        pipe.src = 'imagens/' + img + '.webp';
+    };
+
+}, 1500);
+
+function reloadGame() {
+    location.reload();
+}
+
+document.addEventListener('keydown', (k) => { 
+    console.log(k.keyCode);
+    if(k.keyCode == 32) { 
+        jump();
+    } else if (k.keyCode == 82) {
+        reloadGame();
+    };
+});
+
