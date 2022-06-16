@@ -52,6 +52,7 @@ const loop = setInterval(() => {
         clearInterval(loop);
         clearInterval(scoreCount);
         clearInterval(obstacle);
+        clearInterval(playMusic);
     };
 
 }, 10);
@@ -66,7 +67,6 @@ const scoreCount = setInterval(() => {
 const playMusic = setInterval(() => {
     overWolrdSound.play();
     overWolrdSound.loop = true;
-    clearInterval(playMusic);
 }, 500);
 
 const obstacle = setInterval(() => {
@@ -86,7 +86,6 @@ function reloadGame() {
 }
 
 document.addEventListener('keydown', (k) => { 
-    console.log(k.keyCode);
     if(k.keyCode == 32) { 
         jump();
     } else if (k.keyCode == 82) {
